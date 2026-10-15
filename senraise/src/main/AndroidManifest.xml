@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+      Android 11+ hides other packages from us unless we declare them, and the
+      Senraise receipt service publishes no intent filter to resolve against —
+      it is bound by class name. Without this entry getPackageInfo throws
+      NameNotFoundException on the very terminals that have the printer, so the
+      SDK would report itself unavailable everywhere.
+
+      This is merged into the consuming app's manifest automatically. Nothing
+      else needs to be declared: the service is the vendor's, and binding it
+      requires no permission.
+    -->
+    <queries>
+        <package android:name="recieptservice.com.recieptservice" />
+    </queries>
+
+</manifest>
